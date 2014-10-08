@@ -46,12 +46,12 @@ reset:
 read:
 	xor ax,ax
 	mov es,ax
-	mov bx,0x1000	; Load at address  0x0:0x1000
-					; which is          es:bx
+	mov bx,0x1000		; Load at address  0x0:0x1000
+				; which is          es:bx
 	
 	mov ah,0x02		; Read cmd
 	mov al,0x22		; No. of sectors = 10 sectos
-	mov dl,[drive]	; Load drive no.
+	mov dl,[drive]		; Load drive no.
 	mov ch,0x0		; Cylinder = 0
 	mov cl,0x2 		; Sector = 2
 	mov dh,0x0 		; Head  = 0
@@ -84,9 +84,6 @@ inti32:
 BITS 32
 
 start32:
-	; TODO
-	; > set ds,ss,esp
-	; > jmp to kernel code loaded
 	
 	
 	mov ax,0x10
@@ -148,6 +145,3 @@ gdt_table:
 
 times 510 - ($-$$) db 0
 dw 0xAA55
-
-
-times 1024 dw 0xABCD
